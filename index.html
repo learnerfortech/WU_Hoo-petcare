@@ -2,11 +2,9 @@
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#f7f4ef">
-<meta name="apple-mobile-web-app-capable" content="yes">
-
-<title>WU HOO Petcare · 我的宠物养护</title>
+<title>我的宠物养护</title>
 
 <style>
 :root{
@@ -14,12 +12,14 @@
   --card:#ffffff;
   --text:#292929;
   --sub:#8c8c8c;
-  --green:#5f9f76;
+  --green:#78947e;
+  --green-dark:#5f7966;
   --green-light:#e8f0e9;
-  --line:#ece9e3;
-  --gold:#d69b32;
+  --cream:#f3eadc;
+  --line:#eeeeee;
   --danger:#d97968;
-  --shadow:0 10px 35px rgba(70,60,50,.08);
+  --shadow:0 10px 35px rgba(70,60,50,.07);
+  --radius:22px;
 }
 
 *{
@@ -42,6 +42,7 @@ body{
     "PingFang SC",
     "Microsoft YaHei",
     sans-serif;
+  line-height:1.6;
 }
 
 button,
@@ -53,6 +54,16 @@ textarea{
 button{
   border:0;
   cursor:pointer;
+}
+
+a{
+  color:inherit;
+  text-decoration:none;
+}
+
+img{
+  display:block;
+  max-width:100%;
 }
 
 .app{
@@ -72,135 +83,126 @@ button{
   margin-bottom:18px;
 }
 
-.brand small{
-  color:#92908c;
-  letter-spacing:5px;
-  font-size:12px;
-}
-
-.brand h1{
-  margin:6px 0 0;
-  font-size:31px;
-  letter-spacing:-1px;
-}
-
-.theme{
-  width:52px;
-  height:52px;
-  border-radius:50%;
-  background:#fff;
-  box-shadow:var(--shadow);
-  font-size:24px;
-}
-
-/* =========================
-   宠物主卡片
-========================= */
-
-.hero{
-  background:
-    linear-gradient(
-      135deg,
-      #f9fcf8 0%,
-      #ffffff 55%,
-      #f8fbf8 100%
-    );
-  border-radius:32px;
-  padding:22px;
-  box-shadow:var(--shadow);
-  margin-bottom:25px;
-}
-
-.petrow{
+.brand{
   display:flex;
-  gap:18px;
   align-items:center;
+  gap:12px;
 }
 
-.avatar{
-  width:112px;
-  height:112px;
-  border-radius:30px;
-  background:#e9e1d5;
-  display:grid;
-  place-items:center;
-  font-size:65px;
-  flex:none;
-}
-
-.petinfo{
-  flex:1;
-}
-
-.petinfo h2{
-  margin:0;
-  font-size:35px;
-}
-
-.petinfo p{
-  margin:4px 0;
-  color:var(--sub);
-  font-size:18px;
-}
-
-.badge{
-  display:inline-flex;
-  align-items:center;
-  gap:6px;
-  margin-top:8px;
-  padding:7px 12px;
-  border-radius:20px;
+.logo{
+  width:48px;
+  height:48px;
+  border-radius:16px;
   background:var(--green-light);
-  color:#4c865f;
-  font-size:14px;
-}
-
-.edit{
-  padding:12px 18px;
-  border-radius:22px;
-  background:#fff;
-  color:#4f8c63;
-}
-
-.pets{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:10px;
-  margin-top:18px;
-}
-
-.pettab{
-  padding:15px 8px;
-  border-radius:20px;
-  background:#f5f5f3;
-  color:#777;
-  font-size:16px;
-}
-
-.pettab.active{
-  background:#292929;
-  color:#fff;
-}
-
-/* =========================
-   标题
-========================= */
-
-.section-title{
   display:flex;
-  justify-content:space-between;
   align-items:center;
-  margin:25px 0 13px;
-}
-
-.section-title h3{
-  margin:0;
+  justify-content:center;
   font-size:26px;
 }
 
-.date{
+.brand-title{
+  font-size:20px;
+  font-weight:700;
+}
+
+.brand-sub{
+  font-size:13px;
   color:var(--sub);
-  font-size:14px;
+}
+
+.menu{
+  width:46px;
+  height:46px;
+  border-radius:50%;
+  background:var(--card);
+  box-shadow:var(--shadow);
+  font-size:20px;
+}
+
+/* =========================
+   Hero
+========================= */
+
+.hero{
+  position:relative;
+  overflow:hidden;
+  border-radius:30px;
+  background:var(--card);
+  box-shadow:var(--shadow);
+  margin-bottom:24px;
+}
+
+.hero-image{
+  width:100%;
+  height:360px;
+  object-fit:cover;
+  object-position:center;
+}
+
+.hero-overlay{
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(
+      to top,
+      rgba(35,45,38,.72) 0%,
+      rgba(35,45,38,.18) 50%,
+      rgba(35,45,38,0) 100%
+    );
+}
+
+.hero-content{
+  position:absolute;
+  left:28px;
+  right:28px;
+  bottom:28px;
+  color:#fff;
+}
+
+.hero-tag{
+  display:inline-block;
+  padding:6px 12px;
+  border-radius:999px;
+  background:rgba(255,255,255,.2);
+  backdrop-filter:blur(8px);
+  font-size:13px;
+  margin-bottom:10px;
+}
+
+.hero h1{
+  margin:0 0 6px;
+  font-size:36px;
+  line-height:1.2;
+  letter-spacing:-1px;
+}
+
+.hero p{
+  margin:0;
+  font-size:15px;
+  opacity:.95;
+}
+
+/* =========================
+   欢迎卡片
+========================= */
+
+.welcome{
+  background:var(--card);
+  border-radius:var(--radius);
+  padding:24px;
+  box-shadow:var(--shadow);
+  margin-bottom:24px;
+}
+
+.welcome h2{
+  margin:0 0 8px;
+  font-size:25px;
+}
+
+.welcome p{
+  color:var(--sub);
+  margin:0;
+  font-size:15px;
 }
 
 /* =========================
@@ -211,512 +213,400 @@ button{
   display:grid;
   grid-template-columns:repeat(3,1fr);
   gap:12px;
+  margin-top:20px;
 }
 
 .stat{
-  background:var(--card);
-  border-radius:25px;
-  padding:19px;
-  box-shadow:var(--shadow);
+  background:var(--green-light);
+  border-radius:18px;
+  padding:17px 12px;
+  text-align:center;
+}
+
+.stat-icon{
+  font-size:23px;
+  margin-bottom:3px;
 }
 
 .stat strong{
   display:block;
-  font-size:28px;
-  margin-bottom:4px;
+  font-size:21px;
 }
 
 .stat span{
   color:var(--sub);
-  font-size:14px;
+  font-size:12px;
 }
 
 /* =========================
-   今日养护
+   区块标题
 ========================= */
 
-.card{
+.section{
+  margin-top:34px;
+}
+
+.section-head{
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  margin-bottom:15px;
+}
+
+.section-title{
+  margin:0;
+  font-size:25px;
+}
+
+.section-sub{
+  color:var(--sub);
+  font-size:13px;
+}
+
+/* =========================
+   服务
+========================= */
+
+.services{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:14px;
+}
+
+.service{
   background:var(--card);
-  border-radius:27px;
-  padding:18px;
+  border-radius:20px;
+  padding:21px;
+  box-shadow:var(--shadow);
+  transition:transform .2s ease;
+}
+
+.service:active{
+  transform:scale(.98);
+}
+
+.service-icon{
+  width:48px;
+  height:48px;
+  border-radius:16px;
+  background:var(--green-light);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:25px;
+  margin-bottom:13px;
+}
+
+.service h3{
+  margin:0 0 5px;
+  font-size:17px;
+}
+
+.service p{
+  margin:0;
+  color:var(--sub);
+  font-size:13px;
+}
+
+.service-price{
+  margin-top:12px;
+  color:var(--green-dark);
+  font-weight:700;
+}
+
+/* =========================
+   价格
+========================= */
+
+.price-card{
+  background:var(--card);
+  border-radius:24px;
+  padding:23px;
   box-shadow:var(--shadow);
 }
 
-.add{
-  background:var(--green);
-  color:#fff;
-  border-radius:18px;
-  padding:9px 14px;
-  font-size:15px;
-}
-
-.care{
+.price-row{
   display:flex;
   align-items:center;
-  gap:13px;
-  padding:13px 0;
+  justify-content:space-between;
+  padding:15px 0;
   border-bottom:1px solid var(--line);
 }
 
-.care:last-child{
+.price-row:last-child{
   border-bottom:0;
+  padding-bottom:0;
 }
 
-.icon{
-  width:45px;
-  height:45px;
-  border-radius:16px;
-  background:var(--green-light);
-  display:grid;
-  place-items:center;
-  font-size:22px;
-}
-
-.care .txt{
-  flex:1;
-}
-
-.care b{
-  display:block;
-  font-size:16px;
-}
-
-.care small{
-  display:block;
-  color:var(--sub);
-  margin-top:3px;
-}
-
-.check{
-  width:27px;
-  height:27px;
-  border-radius:50%;
-  border:2px solid #ccc;
-  background:#fff;
-  color:transparent;
-}
-
-.check.done{
-  background:var(--green);
-  border-color:var(--green);
-  color:#fff;
-}
-
-/* =========================
-   双栏区域
-========================= */
-
-.grid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:16px;
-}
-
-/* =========================
-   宠物店
-========================= */
-
-.shop-visual{
-  height:225px;
-  border-radius:21px;
-  overflow:hidden;
-  position:relative;
-  background:
-    linear-gradient(
-      180deg,
-      #fffdf7 0%,
-      #f3e6d4 100%
-    );
-}
-
-.shop-sky{
-  position:absolute;
-  inset:0;
-  background:
-    radial-gradient(
-      circle at 20% 25%,
-      #dcefdc 0 7%,
-      transparent 8%
-    ),
-    radial-gradient(
-      circle at 85% 30%,
-      #dcefdc 0 8%,
-      transparent 9%
-    );
-}
-
-.shop-sign{
-  position:absolute;
-  top:25px;
-  left:18px;
-  right:18px;
-  padding:13px;
-  background:#fff;
-  border-radius:14px;
-  text-align:center;
-  box-shadow:0 7px 20px rgba(80,60,40,.12);
-  font-weight:800;
-  letter-spacing:1px;
-  font-size:18px;
-}
-
-.shop-sign small{
-  display:block;
-  color:#6b9978;
-  margin-top:3px;
-  font-size:11px;
-  letter-spacing:3px;
-}
-
-.shop-window{
-  position:absolute;
-  left:25px;
-  right:25px;
-  bottom:0;
-  height:120px;
-  background:
-    linear-gradient(
-      90deg,
-      rgba(255,255,255,.7),
-      rgba(232,246,235,.9),
-      rgba(255,255,255,.7)
-    );
-  border:5px solid #fff;
-  border-bottom:0;
-  border-radius:20px 20px 0 0;
-}
-
-.shop-window:before{
-  content:"🐕     🪴     🐈";
-  position:absolute;
-  top:30px;
-  left:0;
-  right:0;
-  text-align:center;
-  font-size:30px;
-}
-
-.shop-window:after{
-  content:"WELCOME  •  PET LIFE";
-  position:absolute;
-  bottom:16px;
-  left:0;
-  right:0;
-  text-align:center;
-  color:#689071;
-  font-size:11px;
-  letter-spacing:2px;
-}
-
-.shop-info h4{
-  font-size:22px;
-  margin:12px 0 5px;
-}
-
-.stars{
-  color:var(--gold);
-  letter-spacing:2px;
-}
-
-.stars span{
-  color:var(--text);
-  letter-spacing:0;
-  margin-left:5px;
-}
-
-.shop-info p{
-  color:var(--sub);
-  margin:7px 0;
-  font-size:14px;
-}
-
-.primary{
-  width:100%;
-  padding:13px;
-  border-radius:19px;
-  background:var(--green);
-  color:#fff;
-  margin-top:9px;
-}
-
-/* =========================
-   健康
-========================= */
-
-.health{
-  display:grid;
-  grid-template-columns:1fr 1fr;
+.price-name{
+  display:flex;
+  align-items:center;
   gap:10px;
 }
 
-.health-item{
-  background:#fafaf8;
-  padding:14px;
-  border-radius:18px;
-}
-
-.health-item .emoji{
+.price-name span:first-child{
   font-size:21px;
 }
 
-.health-item b{
-  display:block;
-  margin-top:4px;
+.price-value{
+  color:var(--green-dark);
+  font-weight:700;
 }
 
-.health-item small{
+/* =========================
+   宠物护理理念
+========================= */
+
+.care{
+  background:var(--green);
+  color:#fff;
+  border-radius:25px;
+  padding:27px;
+  box-shadow:var(--shadow);
+}
+
+.care h2{
+  margin:0 0 10px;
+  font-size:24px;
+}
+
+.care p{
+  margin:0;
+  opacity:.92;
+  font-size:14px;
+}
+
+.care-list{
+  margin:20px 0 0;
+  padding:0;
+  list-style:none;
+  display:grid;
+  gap:10px;
+}
+
+.care-list li{
+  background:rgba(255,255,255,.12);
+  border-radius:13px;
+  padding:10px 13px;
+  font-size:14px;
+}
+
+/* =========================
+   预约
+========================= */
+
+.booking{
+  background:var(--card);
+  border-radius:24px;
+  padding:24px;
+  box-shadow:var(--shadow);
+}
+
+.form-group{
+  margin-bottom:15px;
+}
+
+.form-group label{
+  display:block;
+  font-size:13px;
+  margin-bottom:7px;
   color:var(--sub);
 }
 
-/* =========================
-   日记
-========================= */
-
-textarea{
+.form-group input,
+.form-group textarea{
   width:100%;
-  min-height:105px;
   border:1px solid var(--line);
-  border-radius:19px;
-  padding:13px;
-  resize:vertical;
-  background:#fafaf8;
-  color:var(--text);
+  background:#fafafa;
+  border-radius:14px;
+  padding:12px 14px;
   outline:none;
+  color:var(--text);
 }
 
-textarea:focus{
+.form-group textarea{
+  min-height:90px;
+  resize:vertical;
+}
+
+.form-group input:focus,
+.form-group textarea:focus{
   border-color:var(--green);
+  background:#fff;
 }
 
-.save{
+.primary-btn{
+  width:100%;
   background:var(--green);
   color:#fff;
-  padding:10px 16px;
-  border-radius:17px;
-  margin-top:9px;
+  border-radius:16px;
+  padding:14px;
+  font-weight:700;
+  margin-top:3px;
+  transition:background .2s ease, transform .2s ease;
 }
 
-.note{
-  margin-top:10px;
-  padding:12px;
-  background:#faf8f3;
-  border-radius:16px;
-  color:#666;
-  line-height:1.6;
+.primary-btn:hover{
+  background:var(--green-dark);
+}
+
+.primary-btn:active{
+  transform:scale(.98);
 }
 
 /* =========================
-   推荐提示
+   联系
 ========================= */
 
-.tip{
-  margin-top:18px;
-  background:
-    linear-gradient(
-      135deg,
-      #edf6ef,
-      #f9f5ec
-    );
-  border-radius:23px;
-  padding:17px;
+.contact{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:12px;
 }
 
-.tip b{
-  display:block;
+.contact-item{
+  background:var(--card);
+  border-radius:18px;
+  padding:18px 10px;
+  text-align:center;
+  box-shadow:var(--shadow);
+}
+
+.contact-icon{
+  font-size:23px;
   margin-bottom:5px;
 }
 
-.tip span{
-  color:#777;
-  font-size:14px;
-  line-height:1.6;
-}
-
-/* =========================
-   底部导航
-========================= */
-
-.nav{
-  position:fixed;
-  left:50%;
-  bottom:14px;
-  transform:translateX(-50%);
-  width:min(860px,calc(100% - 28px));
-  background:rgba(255,255,255,.94);
-  backdrop-filter:blur(18px);
-  -webkit-backdrop-filter:blur(18px);
-  border-radius:30px;
-  box-shadow:0 8px 30px rgba(0,0,0,.12);
-  display:grid;
-  grid-template-columns:repeat(5,1fr);
-  padding:8px;
-  z-index:20;
-}
-
-.nav button{
-  background:transparent;
-  color:#888;
-  padding:8px 2px;
-  border-radius:21px;
-  font-size:22px;
-}
-
-.nav button.active{
-  background:#edf4ee;
-  color:#5f9f76;
-}
-
-.nav span{
+.contact-item strong{
   display:block;
-  font-size:12px;
-  margin-top:3px;
+  font-size:14px;
+}
+
+.contact-item span{
+  display:block;
+  color:var(--sub);
+  font-size:11px;
+  margin-top:2px;
 }
 
 /* =========================
-   深色模式
+   页脚
 ========================= */
 
-.dark{
-  --bg:#151515;
-  --card:#222;
-  --text:#f4f4f4;
-  --sub:#aaa;
-  --green:#78ad88;
-  --green-light:#26392d;
-  --line:#333;
+.footer{
+  text-align:center;
+  color:var(--sub);
+  font-size:12px;
+  margin-top:40px;
 }
 
-.dark .hero{
-  background:#222;
+.footer-heart{
+  color:var(--green);
 }
 
-.dark .theme{
-  background:#222;
+/* =========================
+   返回顶部
+========================= */
+
+.to-top{
+  position:fixed;
+  right:18px;
+  bottom:22px;
+  width:46px;
+  height:46px;
+  border-radius:50%;
+  background:var(--green);
   color:#fff;
+  box-shadow:0 8px 25px rgba(60,70,60,.2);
+  opacity:0;
+  pointer-events:none;
+  transition:.25s;
 }
 
-.dark .pettab{
-  background:#2b2b2b;
-}
-
-.dark .pettab.active{
-  background:#f4f4f4;
-  color:#222;
-}
-
-.dark textarea{
-  background:#292929;
-  color:#fff;
-  border-color:#3a3a3a;
-}
-
-.dark .note{
-  background:#292929;
-}
-
-.dark .health-item{
-  background:#292929;
-}
-
-.dark .shop-visual{
-  background:
-    linear-gradient(
-      180deg,
-      #34352f,
-      #40382f
-    );
-}
-
-.dark .shop-window{
-  background:rgba(220,240,225,.15);
+.to-top.show{
+  opacity:1;
+  pointer-events:auto;
 }
 
 /* =========================
    手机适配
 ========================= */
 
-@media(max-width:700px){
+@media(max-width:600px){
 
   .app{
-    padding:
-      20px
-      14px
-      115px;
+    padding:16px 14px 100px;
   }
 
-  .brand h1{
-    font-size:29px;
+  .logo{
+    width:44px;
+    height:44px;
   }
-
-  .petrow{
-    align-items:flex-start;
-  }
-
-  .avatar{
-    width:92px;
-    height:92px;
-    font-size:52px;
-  }
-
-  .petinfo h2{
-    font-size:29px;
-  }
-
-  .petinfo p{
-    font-size:16px;
-  }
-
-  .edit{
-    padding:9px 12px;
-  }
-
-  .stats{
-    gap:9px;
-  }
-
-  .stat{
-    padding:15px 12px;
-  }
-
-  .stat strong{
-    font-size:23px;
-  }
-
-  .grid{
-    grid-template-columns:1fr;
-  }
-
-  .shop-visual{
-    height:215px;
-  }
-}
-
-@media(max-width:430px){
 
   .hero{
-    padding:18px;
-    border-radius:27px;
+    border-radius:24px;
   }
 
-  .pets{
-    gap:7px;
+  .hero-image{
+    height:310px;
   }
 
-  .pettab{
-    padding:13px 5px;
+  .hero-content{
+    left:20px;
+    right:20px;
+    bottom:21px;
+  }
+
+  .hero h1{
+    font-size:29px;
+  }
+
+  .hero p{
     font-size:14px;
   }
 
+  .welcome{
+    padding:20px;
+  }
+
+  .welcome h2{
+    font-size:22px;
+  }
+
   .stats{
-    grid-template-columns:repeat(3,1fr);
+    gap:8px;
   }
 
-  .stat span{
-    font-size:12px;
+  .stat{
+    padding:14px 7px;
   }
 
-  .section-title h3{
-    font-size:23px;
+  .services{
+    grid-template-columns:1fr;
+  }
+
+  .contact{
+    grid-template-columns:1fr;
+  }
+
+  .section{
+    margin-top:28px;
+  }
+
+  .section-title{
+    font-size:22px;
+  }
+}
+
+@media(min-width:601px){
+  .booking-form{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:0 14px;
+  }
+
+  .booking-form .full{
+    grid-column:1 / -1;
   }
 }
 </style>
@@ -724,862 +614,429 @@ textarea:focus{
 
 <body>
 
-<main class="app">
+<div class="app">
 
-<!-- =========================
-     顶部
-========================= -->
-
-<header class="top">
-
-  <div class="brand">
-    <small>WU HOO PETCARE</small>
-    <h1>我的宠物养护 🐾</h1>
-  </div>
-
-  <button
-    class="theme"
-    onclick="toggleTheme()"
-    aria-label="切换深色模式">
-    ☾
-  </button>
-
-</header>
-
-
-<!-- =========================
-     宠物
-========================= -->
-
-<section class="hero">
-
-  <div class="petrow">
-
-    <div
-      class="avatar"
-      id="avatar">
-      🐕
+  <!-- 顶部 -->
+  <header class="top">
+    <div class="brand">
+      <div class="logo">🐾</div>
+      <div>
+        <div class="brand-title">安心宠物护理</div>
+        <div class="brand-sub">温柔照顾每一个小生命</div>
+      </div>
     </div>
 
-    <div class="petinfo">
-
-      <h2 id="petName">
-        豆豆 🐕
-      </h2>
-
-      <p id="petInfo">
-        2 岁 · 公 · 柴犬
-      </p>
-
-      <span class="badge">
-        ♥ 健康状态：良好
-      </span>
-
-    </div>
-
-    <button
-      class="edit"
-      onclick="editPet()">
-      编辑
+    <button class="menu" onclick="scrollToBooking()" aria-label="预约">
+      ♡
     </button>
+  </header>
 
-  </div>
 
+  <!-- 店铺宣传图 -->
+  <section class="hero">
 
-  <div class="pets">
+    <!--
+      这里已经正确连接仓库中的图片：
+      petcare-store.PNG
+    -->
+    <img
+      class="hero-image"
+      src="./petcare-store.PNG"
+      alt="温馨明亮的宠物护理店"
+    >
 
-    <button
-      class="pettab active"
-      onclick="switchPet(this,'豆豆','🐕','2 岁 · 公 · 柴犬')">
-      🐕<br>豆豆
-    </button>
+    <div class="hero-overlay"></div>
 
-    <button
-      class="pettab"
-      onclick="switchPet(this,'团团','🐈','1 岁 · 母 · 英短')">
-      🐈<br>团团
-    </button>
+    <div class="hero-content">
+      <div class="hero-tag">🐾 温柔 · 专业 · 安心</div>
 
-    <button
-      class="pettab"
-      onclick="switchPet(this,'奶糖','🐩','3 岁 · 母 · 贵宾')">
-      🐩<br>奶糖
-    </button>
-
-  </div>
-
-</section>
-
-
-<!-- =========================
-     今日概览
-========================= -->
-
-<section>
-
-  <div class="section-title">
-
-    <h3>
-      📅 今日概览
-    </h3>
-
-    <span class="date">
-      9/14
-    </span>
-
-  </div>
-
-
-  <div class="stats">
-
-    <div class="stat">
-      <strong id="progress">
-        0/4
-      </strong>
-      <span>
-        今日养护
-      </span>
-    </div>
-
-    <div class="stat">
-      <strong>
-        10.8 kg
-      </strong>
-      <span>
-        最近体重
-      </span>
-    </div>
-
-    <div class="stat">
-      <strong>
-        良好
-      </strong>
-      <span>
-        健康状态
-      </span>
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- =========================
-     今日养护
-========================= -->
-
-<section id="careSection">
-
-  <div class="section-title">
-
-    <h3>
-      🐾 今日养护
-    </h3>
-
-    <button
-      class="add"
-      onclick="addCare()">
-      ＋ 添加
-    </button>
-
-  </div>
-
-
-  <div
-    class="card"
-    id="careList">
-
-
-    <div class="care">
-
-      <div class="icon">
-        🍚
-      </div>
-
-      <div class="txt">
-        <b>早餐</b>
-        <small>08:00</small>
-      </div>
-
-      <button
-        class="check"
-        onclick="checkCare(this)">
-        ✓
-      </button>
-
-    </div>
-
-
-    <div class="care">
-
-      <div class="icon">
-        💧
-      </div>
-
-      <div class="txt">
-        <b>喝水检查</b>
-        <small>10:00</small>
-      </div>
-
-      <button
-        class="check"
-        onclick="checkCare(this)">
-        ✓
-      </button>
-
-    </div>
-
-
-    <div class="care">
-
-      <div class="icon">
-        🐾
-      </div>
-
-      <div class="txt">
-        <b>外出散步</b>
-        <small>18:00</small>
-      </div>
-
-      <button
-        class="check"
-        onclick="checkCare(this)">
-        ✓
-      </button>
-
-    </div>
-
-
-    <div class="care">
-
-      <div class="icon">
-        🦷
-      </div>
-
-      <div class="txt">
-        <b>刷牙护理</b>
-        <small>21:00</small>
-      </div>
-
-      <button
-        class="check"
-        onclick="checkCare(this)">
-        ✓
-      </button>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- =========================
-     店铺 + 健康
-========================= -->
-
-<div class="grid">
-
-
-<!-- 宠物店 -->
-
-<section id="shop">
-
-  <div class="section-title">
-
-    <h3>
-      🏪 推荐店铺
-    </h3>
-
-  </div>
-
-
-  <div class="card">
-
-    <div class="shop-visual">
-
-      <div class="shop-sky"></div>
-
-      <div class="shop-sign">
-
-        🐾 WU HOO 宠物生活馆
-
-        <small>
-          BETTER CARE · HAPPIER LIFE
-        </small>
-
-      </div>
-
-      <div class="shop-window"></div>
-
-    </div>
-
-
-    <div class="shop-info">
-
-      <h4>
-        WU HOO 宠物生活馆
-      </h4>
-
-      <div class="stars">
-        ★★★★★
-        <span>
-          4.9
-        </span>
-      </div>
+      <h1>让毛孩子被温柔对待</h1>
 
       <p>
-        📍 温馨宠物街 · 88号
+        一个明亮、舒服、安心的宠物护理空间
       </p>
+    </div>
+
+  </section>
+
+
+  <!-- 欢迎 -->
+  <section class="welcome">
+
+    <h2>欢迎来到我们的宠物护理空间 🐶</h2>
+
+    <p>
+      从日常清洁到细致护理，
+      我们希望每一次护理，都能让你的毛孩子更舒服一点。
+    </p>
+
+    <div class="stats">
+
+      <div class="stat">
+        <div class="stat-icon">🐾</div>
+        <strong>温柔</strong>
+        <span>细心护理</span>
+      </div>
+
+      <div class="stat">
+        <div class="stat-icon">🛁</div>
+        <strong>洁净</strong>
+        <span>舒适环境</span>
+      </div>
+
+      <div class="stat">
+        <div class="stat-icon">💚</div>
+        <strong>安心</strong>
+        <span>用心陪伴</span>
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- 服务 -->
+  <section class="section">
+
+    <div class="section-head">
+      <div>
+        <h2 class="section-title">我们的服务</h2>
+        <div class="section-sub">为毛孩子准备的细致护理</div>
+      </div>
+    </div>
+
+    <div class="services">
+
+      <div class="service">
+        <div class="service-icon">🛁</div>
+        <h3>基础洗护</h3>
+        <p>温和清洁，让毛发恢复柔软蓬松。</p>
+        <div class="service-price">¥ 88 起</div>
+      </div>
+
+      <div class="service">
+        <div class="service-icon">✂️</div>
+        <h3>美容修剪</h3>
+        <p>根据宠物特点进行细致修剪。</p>
+        <div class="service-price">¥ 128 起</div>
+      </div>
+
+      <div class="service">
+        <div class="service-icon">🧴</div>
+        <h3>深层护理</h3>
+        <p>针对皮毛状态提供更细致的护理。</p>
+        <div class="service-price">¥ 108 起</div>
+      </div>
+
+      <div class="service">
+        <div class="service-icon">🐾</div>
+        <h3>爪爪护理</h3>
+        <p>修剪指甲并进行基础足部清洁。</p>
+        <div class="service-price">¥ 38 起</div>
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- 价格 -->
+  <section class="section">
+
+    <div class="section-head">
+      <div>
+        <h2 class="section-title">护理参考价格</h2>
+        <div class="section-sub">实际价格可根据宠物情况调整</div>
+      </div>
+    </div>
+
+    <div class="price-card">
+
+      <div class="price-row">
+        <div class="price-name">
+          <span>🛁</span>
+          <span>基础洗护</span>
+        </div>
+        <div class="price-value">¥88 起</div>
+      </div>
+
+      <div class="price-row">
+        <div class="price-name">
+          <span>✂️</span>
+          <span>美容修剪</span>
+        </div>
+        <div class="price-value">¥128 起</div>
+      </div>
+
+      <div class="price-row">
+        <div class="price-name">
+          <span>🧴</span>
+          <span>深层护理</span>
+        </div>
+        <div class="price-value">¥108 起</div>
+      </div>
+
+      <div class="price-row">
+        <div class="price-name">
+          <span>🐾</span>
+          <span>爪爪护理</span>
+        </div>
+        <div class="price-value">¥38 起</div>
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- 护理理念 -->
+  <section class="section">
+
+    <div class="care">
+
+      <h2>我们相信，护理也是一种陪伴 💚</h2>
 
       <p>
-        ☎ 010-8888-8888
+        不追求快速完成，而是尽量让每一个小朋友
+        都能在舒服、安静的状态下完成护理。
       </p>
 
-      <p>
-        🕘 09:00 - 21:00
-      </p>
-
-      <button
-        class="primary"
-        onclick="shopAction()">
-        🐾 查看店铺
-      </button>
+      <ul class="care-list">
+        <li>✓ 温柔对待，减少紧张感</li>
+        <li>✓ 保持护理环境干净整洁</li>
+        <li>✓ 根据宠物状态调整护理方式</li>
+        <li>✓ 认真观察每一个细节</li>
+      </ul>
 
     </div>
 
-  </div>
-
-</section>
+  </section>
 
 
-<!-- 健康 -->
+  <!-- 预约 -->
+  <section class="section" id="booking">
 
-<section id="health">
+    <div class="section-head">
+      <div>
+        <h2 class="section-title">预约护理</h2>
+        <div class="section-sub">提前预约，让我们更好地安排时间</div>
+      </div>
+    </div>
 
-  <div class="section-title">
+    <div class="booking">
 
-    <h3>
-      ❤️ 健康记录
-    </h3>
+      <form
+        class="booking-form"
+        onsubmit="submitBooking(event)"
+      >
 
-  </div>
+        <div class="form-group">
+          <label for="name">您的称呼</label>
+          <input
+            id="name"
+            type="text"
+            placeholder="例如：小林"
+            required
+          >
+        </div>
+
+        <div class="form-group">
+          <label for="pet">宠物名字</label>
+          <input
+            id="pet"
+            type="text"
+            placeholder="例如：豆豆"
+            required
+          >
+        </div>
+
+        <div class="form-group">
+          <label for="date">希望护理日期</label>
+          <input
+            id="date"
+            type="date"
+            required
+          >
+        </div>
+
+        <div class="form-group">
+          <label for="phone">联系电话</label>
+          <input
+            id="phone"
+            type="tel"
+            placeholder="请输入联系电话"
+            required
+          >
+        </div>
+
+        <div class="form-group full">
+          <label for="message">想告诉我们什么？</label>
+          <textarea
+            id="message"
+            placeholder="例如：狗狗比较怕吹风，希望护理时温柔一点～"
+          ></textarea>
+        </div>
+
+        <div class="full">
+          <button
+            class="primary-btn"
+            type="submit"
+          >
+            🐾 提交护理预约
+          </button>
+        </div>
+
+      </form>
+
+    </div>
+
+  </section>
 
 
-  <div class="card health">
+  <!-- 联系 -->
+  <section class="section">
 
+    <div class="section-head">
+      <div>
+        <h2 class="section-title">联系我们</h2>
+        <div class="section-sub">有任何问题都欢迎联系我们</div>
+      </div>
+    </div>
 
-    <div class="health-item">
+    <div class="contact">
 
-      <div class="emoji">
-        ⚖️
+      <a
+        class="contact-item"
+        href="tel:00000000000"
+      >
+        <div class="contact-icon">📞</div>
+        <strong>电话咨询</strong>
+        <span>点击拨打</span>
+      </a>
+
+      <div class="contact-item">
+        <div class="contact-icon">📍</div>
+        <strong>店铺地址</strong>
+        <span>欢迎到店</span>
       </div>
 
-      <b>
-        体重
-      </b>
-
-      <small>
-        10.8 kg
-      </small>
-
-    </div>
-
-
-    <div class="health-item">
-
-      <div class="emoji">
-        💉
+      <div class="contact-item">
+        <div class="contact-icon">🕐</div>
+        <strong>营业时间</strong>
+        <span>09:00 — 20:00</span>
       </div>
 
-      <b>
-        疫苗
-      </b>
-
-      <small>
-        正常
-      </small>
-
     </div>
 
+  </section>
 
-    <div class="health-item">
 
-      <div class="emoji">
-        🪱
-      </div>
+  <!-- 页脚 -->
+  <footer class="footer">
 
-      <b>
-        驱虫
-      </b>
-
-      <small>
-        未设置
-      </small>
-
+    <div>
+      🐾 用心照顾每一个毛孩子
     </div>
 
-
-    <div class="health-item">
-
-      <div class="emoji">
-        💊
-      </div>
-
-      <b>
-        用药
-      </b>
-
-      <small>
-        无
-      </small>
-
+    <div>
+      © 2026 安心宠物护理
+      <span class="footer-heart">♥</span>
     </div>
 
-  </div>
-
-</section>
+  </footer>
 
 </div>
 
 
-<!-- =========================
-     宠物日记
-========================= -->
-
-<section id="diarySection">
-
-  <div class="section-title">
-
-    <h3>
-      📖 宠物日记
-    </h3>
-
-  </div>
-
-
-  <div class="card">
-
-    <textarea
-      id="diary"
-      placeholder="记录今天和豆豆发生的小故事……">
-    </textarea>
-
-    <button
-      class="save"
-      onclick="saveDiary()">
-      💾 保存日记
-    </button>
-
-    <div id="saved"></div>
-
-  </div>
-
-</section>
-
-
-<!-- =========================
-     温馨提示
-========================= -->
-
-<section class="tip">
-
-  <b>
-    🌿 今日宠物小提醒
-  </b>
-
-  <span>
-    记得保持充足饮水，天气合适时带宠物出去散散步。
-    陪伴本身，就是最好的养护。
-  </span>
-
-</section>
-
-</main>
-
-
-<!-- =========================
-     底部导航
-========================= -->
-
-<nav class="nav">
-
-  <button
-    class="active"
-    onclick="goTop(this)">
-    🏠
-    <span>首页</span>
-  </button>
-
-  <button
-    onclick="goCare(this)">
-    🐾
-    <span>宠物</span>
-  </button>
-
-  <button
-    onclick="goHealth(this)">
-    ❤️
-    <span>健康</span>
-  </button>
-
-  <button
-    onclick="goDiary(this)">
-    ✎
-    <span>日记</span>
-  </button>
-
-  <button
-    onclick="toggleTheme()">
-    ☻
-    <span>我的</span>
-  </button>
-
-</nav>
+<!-- 返回顶部 -->
+<button
+  class="to-top"
+  id="toTop"
+  onclick="window.scrollTo({top:0,behavior:'smooth'})"
+  aria-label="返回顶部"
+>
+  ↑
+</button>
 
 
 <script>
 
 /* =========================
-   养护打卡
+   滚动到预约
 ========================= */
 
-let completed = 0;
-
-function checkCare(btn){
-
-  btn.classList.toggle("done");
-
-  if(btn.classList.contains("done")){
-    completed++;
-  }else{
-    completed--;
-  }
-
-  document.getElementById("progress").textContent =
-    completed + "/4";
-
+function scrollToBooking(){
+  document
+    .getElementById("booking")
+    .scrollIntoView({
+      behavior:"smooth"
+    });
 }
 
 
 /* =========================
-   添加养护
+   预约提交
 ========================= */
 
-function addCare(){
+function submitBooking(event){
 
-  const name = prompt(
-    "请输入养护项目，例如：喂零食"
-  );
-
-  if(!name) return;
-
-  const time = prompt(
-    "请输入时间，例如：20:00",
-    "20:00"
-  ) || "";
-
-  const item =
-    document.createElement("div");
-
-  item.className = "care";
-
-  item.innerHTML = `
-    <div class="icon">
-      🐾
-    </div>
-
-    <div class="txt">
-      <b>${escapeHtml(name)}</b>
-      <small>${escapeHtml(time)}</small>
-    </div>
-
-    <button
-      class="check"
-      onclick="checkCare(this)">
-      ✓
-    </button>
-  `;
-
-  document
-    .getElementById("careList")
-    .appendChild(item);
-
-}
-
-
-/* =========================
-   宠物切换
-========================= */
-
-function switchPet(
-  el,
-  name,
-  emoji,
-  info
-){
-
-  document
-    .querySelectorAll(".pettab")
-    .forEach(
-      x => x.classList.remove("active")
-    );
-
-  el.classList.add("active");
-
-  document
-    .getElementById("petName")
-    .textContent =
-    name + " " + emoji;
-
-  document
-    .getElementById("petInfo")
-    .textContent =
-    info;
-
-  document
-    .getElementById("avatar")
-    .textContent =
-    emoji;
-
-}
-
-
-/* =========================
-   编辑宠物
-========================= */
-
-function editPet(){
+  event.preventDefault();
 
   const name =
-    prompt(
-      "宠物名称",
-      document
-        .getElementById("petName")
-        .textContent
-        .replace(" 🐕","")
-        .replace(" 🐈","")
-        .replace(" 🐩","")
-    );
+    document.getElementById("name").value.trim();
 
-  if(!name) return;
+  const pet =
+    document.getElementById("pet").value.trim();
 
-  document
-    .getElementById("petName")
-    .textContent =
-    name + " 🐾";
-
-}
-
-
-/* =========================
-   店铺
-========================= */
-
-function shopAction(){
-
-  alert(
-    "这里以后可以继续升级成：\n\n" +
-    "📍 查看地图\n" +
-    "☎ 一键拨号\n" +
-    "📅 在线预约\n" +
-    "🛍️ 查看商品\n" +
-    "⭐ 查看评价"
-  );
-
-}
-
-
-/* =========================
-   日记
-========================= */
-
-function saveDiary(){
-
-  const text =
-    document
-      .getElementById("diary")
-      .value
-      .trim();
-
-  if(!text){
-
-    alert("先写一点今天的小故事吧 🐾");
-
+  if(!name || !pet){
+    alert("请先填写您的称呼和宠物名字 🐾");
     return;
   }
 
-  localStorage.setItem(
-    "wuhoo_pet_diary",
-    text
-  );
-
-  document
-    .getElementById("saved")
-    .innerHTML = `
-      <div class="note">
-        📖 已保存：${escapeHtml(text)}
-      </div>
-    `;
-
-}
-
-
-/* =========================
-   恢复日记
-========================= */
-
-const oldDiary =
-  localStorage.getItem(
-    "wuhoo_pet_diary"
-  );
-
-if(oldDiary){
-
-  document
-    .getElementById("saved")
-    .innerHTML = `
-      <div class="note">
-        📖 ${escapeHtml(oldDiary)}
-      </div>
-    `;
-
-}
-
-
-/* =========================
-   深色模式
-========================= */
-
-function toggleTheme(){
-
-  document
-    .body
-    .classList
-    .toggle("dark");
-
-  const dark =
-    document
-      .body
-      .classList
-      .contains("dark");
-
-  localStorage.setItem(
-    "wuhoo_dark",
-    dark
+  alert(
+    "预约信息已填写完成！\n\n" +
+    "感谢 " + name + " 对 " + pet +
+    " 的信任 💚\n\n" +
+    "正式营业后可以在这里接入真实预约系统。"
   );
 
 }
 
 
-if(
-  localStorage.getItem(
-    "wuhoo_dark"
-  ) === "true"
-){
-
-  document
-    .body
-    .classList
-    .add("dark");
-
-}
-
-
 /* =========================
-   底部导航
+   返回顶部按钮
 ========================= */
 
-function clearNav(){
+const toTop =
+  document.getElementById("toTop");
 
-  document
-    .querySelectorAll(".nav button")
-    .forEach(
-      x => x.classList.remove("active")
-    );
+window.addEventListener(
+  "scroll",
+  function(){
 
-}
-
-
-function goTop(btn){
-
-  clearNav();
-
-  btn.classList.add("active");
-
-  window.scrollTo({
-    top:0,
-    behavior:"smooth"
-  });
-
-}
-
-
-function goCare(btn){
-
-  clearNav();
-
-  btn.classList.add("active");
-
-  document
-    .getElementById("careSection")
-    .scrollIntoView({
-      behavior:"smooth"
-    });
-
-}
-
-
-function goHealth(btn){
-
-  clearNav();
-
-  btn.classList.add("active");
-
-  document
-    .getElementById("health")
-    .scrollIntoView({
-      behavior:"smooth"
-    });
-
-}
-
-
-function goDiary(btn){
-
-  clearNav();
-
-  btn.classList.add("active");
-
-  document
-    .getElementById("diarySection")
-    .scrollIntoView({
-      behavior:"smooth"
-    });
-
-}
-
-
-/* =========================
-   安全处理文字
-========================= */
-
-function escapeHtml(text){
-
-  return text.replace(
-    /[&<>"']/g,
-    function(m){
-
-      return {
-        "&":"&amp;",
-        "<":"&lt;",
-        ">":"&gt;",
-        '"':"&quot;",
-        "'":"&#39;"
-      }[m];
-
+    if(window.scrollY > 400){
+      toTop.classList.add("show");
+    }else{
+      toTop.classList.remove("show");
     }
-  );
+
+  }
+);
+
+
+/* =========================
+   自动设置日期
+========================= */
+
+const dateInput =
+  document.getElementById("date");
+
+if(dateInput){
+
+  const today =
+    new Date().toISOString().split("T")[0];
+
+  dateInput.min = today;
 
 }
 
